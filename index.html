@@ -539,6 +539,35 @@
             transform: translateY(0);
         }
 
+        .form-status {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .form-status.success {
+            background: #10b981;
+            color: white;
+        }
+
+        .form-status.error {
+            background: #ef4444;
+            color: white;
+        }
+
+        .form-status.visible {
+            display: block;
+            opacity: 1;
+        }
+
+        .hidden {
+            display: none;
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -619,44 +648,6 @@
                 margin: 1rem 0;
             }
         }
-
-
-        .steps {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .step {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .step-number {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 30px;
-            margin-right: 10px;
-        }
-
-        .success-check {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background: #10b981;
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 20px;
-            font-size: 12px;
-            margin-left: 10px;
-        }
     </style>
 </head>
 <body>
@@ -684,8 +675,7 @@
             <h1 class="animate__animated animate__fadeInUp">Zeineb Chebbi</h1>
             <p class="subtitle animate__animated animate__fadeInUp animate__delay-1s">Full-Stack Developer & Engineering Student</p>
             <p class="description animate__animated animate__fadeInUp animate__delay-2s">
-                Passionate Computer Science Engineering student with 2+ years of professional experience in modern web technologies. 
-
+                Passionate Computer Science Engineering student with 2+ years of professional experience in modern web technologies.
             </p>
             <div class="cta-buttons animate__animated animate__fadeInUp animate__delay-3s">
                 <a href="#contact" class="btn btn-primary">
@@ -725,8 +715,8 @@
                     <br>
                     <p>
                         <span class="highlight">Fluent in English and French</span>, I'm actively seeking a new opportunity 
-                         with potential for full-time employment. I'm immediately available for relocation and excited to contribute 
-                        to innovative  tech companies.
+                        with potential for full-time employment. I'm immediately available for relocation and excited to contribute 
+                        to innovative tech companies.
                     </p>
                 </div>
             </div>
@@ -916,7 +906,11 @@
                         </div>
                     </div>
                 </div>
-                <form name="contact" netlify class="contact-form">
+                <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form" id="contactForm">
+                    <input type="hidden" name="form-name" value="contact" />
+                    <p class="hidden">
+                        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                    </p>
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -936,11 +930,16 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-paper-plane"></i> Send Message
                     </button>
+                    <div class="form-status success" id="formSuccess">
+                        <i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully.
+                    </div>
+                    <div class="form-status error" id="formError">
+                        <i class="fas fa-exclamation-circle"></i> Sorry, there was an error sending your message. Please try again.
+                    </div>
                 </form>
             </div>
         </div>
     </section>
-
 
     <!-- Footer -->
     <footer>
@@ -1031,27 +1030,60 @@
             observer.observe(el);
         });
 
-        // Form handling
-        const contactForm = document.querySelector('form[name="contact"]');
+        // Form handling for Netlify
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+        const formError = document.getElementById('formError');
+        
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
                 const submitBtn = this.querySelector('button[type="submit"]');
                 const originalText = submitBtn.innerHTML;
                 
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
                 submitBtn.disabled = true;
                 
-                setTimeout(function() {
-                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-                    submitBtn.style.background = '#10b981';
-                    
+                // Hide any previous messages
+                formSuccess.classList.remove('visible');
+                formError.classList.remove('visible');
+                
+                // Create form data
+                const formData = new FormData(contactForm);
+                
+                // Submit to Netlify
+                fetch('/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Accept': 'application/json'
+                    },
+                    body: new URLSearchParams(formData).toString()
+                })
+                .then(response => {
+                    console.log('Response status:', response.status);
+                    if (response.ok) {
+                        formSuccess.classList.add('visible');
+                        contactForm.reset();
+                    } else {
+                        return response.text().then(text => {
+                            throw new Error(`Form submission failed: ${response.status} ${response.statusText} - ${text}`);
+                        });
+                    }
+                })
+                .catch(error => {
+                    formError.classList.add('visible');
+                    console.error('Form submission error:', error);
+                })
+                .finally(() => {
                     setTimeout(() => {
                         submitBtn.innerHTML = originalText;
-                        submitBtn.style.background = '';
                         submitBtn.disabled = false;
-                        contactForm.reset();
-                    }, 3000);
-                }, 1500);
+                        formSuccess.classList.remove('visible');
+                        formError.classList.remove('visible');
+                    }, 5000);
+                });
             });
         }
 
