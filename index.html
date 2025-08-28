@@ -657,6 +657,11 @@
             font-size: 12px;
             margin-left: 10px;
         }
+        
+        /* Added for Netlify form honeypot */
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -916,7 +921,12 @@
                         </div>
                     </div>
                 </div>
-                <form name="contact" netlify class="contact-form">
+                <!-- Fixed form with Netlify attributes -->
+                <form name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true" class="contact-form">
+                    <input type="hidden" name="form-name" value="contact" />
+                    <p class="hidden">
+                        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                    </p>
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -940,7 +950,6 @@
             </div>
         </div>
     </section>
-
 
     <!-- Footer -->
     <footer>
