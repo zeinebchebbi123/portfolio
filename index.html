@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zeineb Chebbi - Full-Stack Developer</title>
+    <title>Zeineb Chebbi - Full-Stack Developer & AI Enthusiast</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <style>
@@ -18,6 +18,7 @@
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
+            background-color: #f8fafc;
         }
 
         :root {
@@ -27,6 +28,7 @@
             --dark: #1e293b;
             --light: #f8fafc;
             --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --ai-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --glass: rgba(255, 255, 255, 0.1);
         }
 
@@ -416,6 +418,45 @@
             font-size: 0.8rem;
         }
 
+        .education {
+            background: var(--light);
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .education-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .institution {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .duration {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
         .contact {
             background: var(--dark);
             color: white;
@@ -427,7 +468,7 @@
 
         .contact-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 3rem;
             max-width: 800px;
             margin: 0 auto;
@@ -453,37 +494,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255,255,255,0.7);
         }
 
         footer {
@@ -539,33 +549,21 @@
             transform: translateY(0);
         }
 
-        .form-status {
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 1rem;
-            text-align: center;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .form-status.success {
-            background: #10b981;
-            color: white;
-        }
-
-        .form-status.error {
-            background: #ef4444;
-            color: white;
-        }
-
-        .form-status.visible {
-            display: block;
-            opacity: 1;
-        }
-
         .hidden {
             display: none;
+        }
+
+        .ai-section {
+            background: var(--ai-gradient);
+            color: white;
+        }
+
+        .ai-section .section-title {
+            color: white;
+        }
+
+        .ai-section .section-title::after {
+            background: white;
         }
 
         @media (max-width: 768px) {
@@ -661,6 +659,7 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mobile-menu" id="mobileMenu">
@@ -673,9 +672,9 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1 class="animate__animated animate__fadeInUp">Zeineb Chebbi</h1>
-            <p class="subtitle animate__animated animate__fadeInUp animate__delay-1s">Full-Stack Developer & Engineering Student</p>
+            <p class="subtitle animate__animated animate__fadeInUp animate__delay-1s">Full-Stack Developer & AI Engineering Student</p>
             <p class="description animate__animated animate__fadeInUp animate__delay-2s">
-                Passionate Computer Science Engineering student with 2+ years of professional experience in modern web technologies.
+                Final-year Engineering student in Business Intelligence at ESPRIT, with three years of experience as a FullStack Developer (Java, Spring Boot, Angular). Passionate about AI and LLMs, I aim to combine my web development skills with artificial intelligence to create innovative applications.
             </p>
             <div class="cta-buttons animate__animated animate__fadeInUp animate__delay-3s">
                 <a href="#contact" class="btn btn-primary">
@@ -700,23 +699,15 @@
                 </div>
                 <div class="about-text">
                     <p>
-                        I'm a dedicated <span class="highlight">Full-Stack Developer</span> and Computer Science Engineering student with 
-                        over 2 years of professional experience. Currently pursuing my Engineering degree at ESPRIT School of Engineering 
-                        in Tunisia, I specialize in modern web technologies including <span class="highlight">Angular 18</span>, 
-                        <span class="highlight">Spring Boot</span>.
+                        I'm a final-year <span class="highlight">Engineering student in Business Intelligence</span> at ESPRIT, with three years of professional experience as a FullStack Developer specializing in <span class="highlight">Java, Spring Boot, and Angular</span>.
                     </p>
                     <br>
                     <p>
-                        My journey in software development has taken me through enterprise-level applications serving thousands of users, 
-                        where I've honed my skills in both frontend and backend development. I'm particularly passionate about creating 
-                        scalable, user-centric solutions and have experience with <span class="highlight">containerized deployment</span> 
-                        and <span class="highlight">microservices architecture</span>.
+                        Passionate about <span class="highlight">AI and LLMs</span>, I'm seeking to combine my web development expertise with artificial intelligence to design innovative and intelligent applications. I'm currently looking for a final-year internship starting January 2026 in the web or AI domain.
                     </p>
                     <br>
                     <p>
-                        <span class="highlight">Fluent in English and French</span>, I'm actively seeking a new opportunity 
-                        with potential for full-time employment. I'm immediately available for relocation and excited to contribute 
-                        to innovative tech companies.
+                        <span class="highlight">Fluent in French (C1) and English (C1)</span>, I'm eager to contribute to innovative projects and continue learning in a professional environment.
                     </p>
                 </div>
             </div>
@@ -731,50 +722,77 @@
                 <div class="skill-category">
                     <h3><i class="fas fa-laptop-code"></i> Frontend Development</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">JavaScript/TypeScript</span>
-                        <span class="skill-tag">Angular 18</span>
-                        <span class="skill-tag">React.js</span>
-                        <span class="skill-tag">HTML5/CSS3</span>
-                        <span class="skill-tag">SASS</span>
-                        <span class="skill-tag">Angular Material</span>
+                        <span class="skill-tag">Angular</span>
+                        <span class="skill-tag">Angular CLI</span>
                         <span class="skill-tag">Bootstrap</span>
-                        <span class="skill-tag">DevExtreme</span>
-                        <span class="skill-tag">PWA</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">Form.io</span>
+                        <span class="skill-tag">React.js</span>
                     </div>
                 </div>
                 <div class="skill-category">
                     <h3><i class="fas fa-server"></i> Backend Development</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">Java 18</span>
+                        <span class="skill-tag">Java</span>
                         <span class="skill-tag">Spring Boot</span>
-                        <span class="skill-tag">JHipster</span>
+                        <span class="skill-tag">JPA</span>
+                        <span class="skill-tag">JUnit</span>
+                        <span class="skill-tag">JWT</span>
                         <span class="skill-tag">PHP</span>
-                        <span class="skill-tag">RESTful APIs</span>
-                        <span class="skill-tag">Microservices</span>
-                        <span class="skill-tag">OOP</span>
+                        <span class="skill-tag">JHipster</span>
+                        <span class="skill-tag">MVC</span>
+                        <span class="skill-tag">Multi-threading</span>
+                        <span class="skill-tag">Python</span>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3><i class="fas fa-database"></i> Databases & Data</h3>
+                    <h3><i class="fas fa-brain"></i> AI & Data Science</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Seaborn</span>
+                        <span class="skill-tag">Deep Learning</span>
+                        <span class="skill-tag">Computer Vision</span>
+                        <span class="skill-tag">NLP</span>
+                        <span class="skill-tag">Random Forest</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Databases</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">PostgreSQL</span>
                         <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">SQLite</span>
-                        <span class="skill-tag">Firebase</span>
-                        <span class="skill-tag">SQL/NoSQL</span>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> DevOps & Tools</h3>
+                    <h3><i class="fas fa-tools"></i> DevOps & Cloud</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Jenkins CI/CD</span>
-                        <span class="skill-tag">Git/GitHub</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitLab</span>
                         <span class="skill-tag">Maven</span>
+                        <span class="skill-tag">NPM</span>
+                        <span class="skill-tag">AWS</span>
                         <span class="skill-tag">Azure</span>
-                        <span class="skill-tag">Postman</span>
-                        <span class="skill-tag">Swagger</span>
-                        <span class="skill-tag">Jira</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-bar"></i> Analysis & Visualization</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Tableau</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-users"></i> Methodologies & Collaboration</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Agile / Scrum</span>
+                        <span class="skill-tag">JIRA</span>
+                        <span class="skill-tag">Confluence</span>
                     </div>
                 </div>
             </div>
@@ -788,37 +806,36 @@
             <div class="timeline fade-in">
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <h3>Full-Stack Developer</h3>
+                        <h3>Java Angular Spring Boot Developer</h3>
                         <div class="company">Picosoft - Tunisia</div>
-                        <div class="duration">2022 - Present (2+ years)</div>
+                        <div class="duration">10/2022 - 09/2025</div>
                         <ul>
-                            <li>Architected enterprise web applications using Angular 18 and Spring Boot, serving 1000+ users daily</li>
-                            <li>Improved user experience by 40% through responsive frontend development</li>
-                            <li>Built and integrated 15+ RESTful APIs ensuring 99.9% uptime</li>
-                            <li>Reduced deployment time by 60% with Docker containerization</li>
-                            <li>Maintained 95% code coverage through comprehensive testing</li>
+                            <li>Development of independent modules for an email management project with Angular and Spring Boot</li>
+                            <li>Implementation of RESTful APIs with Spring Boot, accompanied by comprehensive documentation</li>
+                            <li>Automated deployment with Docker + Jenkins</li>
+                            <li>Setup of Power BI dashboards for activity monitoring</li>
+                            <li>Teamwork in Agile/Scrum methodology</li>
                         </ul>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <h3>Final Year Project Intern</h3>
-                        <div class="company">Wevioo - Tunisia</div>
-                        <div class="duration">2022 (6 months)</div>
+                        <h3>Full-Stack Developer - Intern</h3>
+                        <div class="company">Weyloo - Tunisia</div>
+                        <div class="duration">02/2022 - 07/2022</div>
                         <ul>
-                            <li>Designed comprehensive knowledge management system using React.js and PHP</li>
-                            <li>Implemented role-based access control and user authentication</li>
+                            <li>Development of a knowledge management application with React.js (Frontend) + PHP (Backend)</li>
+                            <li>Implementation of authentication system and user role management</li>
                         </ul>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <h3>Mobile Development Intern</h3>
+                        <h3>Mobile Developer - Intern</h3>
                         <div class="company">Ministry of Agriculture - Tunisia</div>
-                        <div class="duration">2020 (3 months)</div>
+                        <div class="duration">05/2020 - 07/2020</div>
                         <ul>
-                            <li>Developed native Android application using Java and Android Studio</li>
-                            <li>Collaborated with government stakeholders for user-centric solutions</li>
+                            <li>Contribution to the development of a native Android application with Java and Android Studio</li>
                         </ul>
                     </div>
                 </div>
@@ -829,43 +846,77 @@
     <!-- Projects Section -->
     <section id="projects">
         <div class="container">
-            <h2 class="section-title fade-in">Featured Projects</h2>
+            <h2 class="section-title fade-in">Academic & Technical Projects</h2>
             <div class="projects-grid fade-in">
                 <div class="project-card">
                     <div class="project-header">
                         <div class="project-icon">
-                            <i class="fas fa-book-open"></i>
+                            <i class="fas fa-car-crash"></i>
                         </div>
-                        <h3>Enterprise Knowledge Management Platform</h3>
+                        <h3>Real-Time Accident Detection System</h3>
                     </div>
                     <div class="project-content">
-                        <p>Comprehensive knowledge management system that streamlined information sharing across 5 departments, 
-                           featuring document management, advanced search functionality, and user analytics.</p>
+                        <p>Development of a proactive system for detecting accident probabilities from live video streams using deep learning and computer vision.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">React.js</span>
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">CNN</span>
+                            <span class="tech-tag">ANN</span>
+                            <span class="tech-tag">Computer Vision</span>
                         </div>
                     </div>
                 </div>
                 <div class="project-card">
                     <div class="project-header">
                         <div class="project-icon">
-                            <i class="fas fa-cubes"></i>
+                            <i class="fas fa-palette"></i>
                         </div>
-                        <h3>Containerized Microservices Architecture</h3>
+                        <h3>Artwork Classification by Artistic Style</h3>
                     </div>
                     <div class="project-content">
-                        <p>Scalable microservices architecture that reduced deployment complexity and achieved 99.9% application 
-                           availability in production environment through containerization and CI/CD pipeline.</p>
+                        <p>Automatic classification of artworks according to their artistic style using deep learning and NLP techniques.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">Spring Boot</span>
-                            <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">Jenkins</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Deep Learning</span>
+                            <span class="tech-tag">Random Forest</span>
+                            <span class="tech-tag">NLP</span>
                         </div>
                     </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-road"></i>
+                        </div>
+                        <h3>Road Accident Predictive System</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>Prediction of accident risks based on multi-criteria data using machine learning and data analysis.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Random Forest</span>
+                            <span class="tech-tag">Data Analysis</span>
+                            <span class="tech-tag">Machine Learning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title fade-in">Education</h2>
+            <div class="education-grid fade-in">
+                <div class="education-card">
+                    <h3>Business Intelligence Engineering Degree</h3>
+                    <div class="institution">ESPRIT - Private Higher School of Engineering and Technology</div>
+                    <div class="duration">Engineering Degree in Computer Science (evening courses)</div>
+                </div>
+                <div class="education-card">
+                    <h3>Computer Engineering Degree</h3>
+                    <div class="institution">Faculty of Sciences of Tunis</div>
+                    <div class="duration">Degree in Computer Engineering</div>
                 </div>
             </div>
         </div>
@@ -888,55 +939,31 @@
                         <i class="fas fa-phone"></i>
                         <div>
                             <h4>Phone</h4>
-                            <p>+216 51971373</p>
+                            <p>+216 94 951 922</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h4>Location</h4>
-                            <p>Tunisia (Available for relocation)</p>
+                            <p>Tunis, Tunisia</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-briefcase"></i>
                         <div>
                             <h4>Availability</h4>
-                            <p>Seeking final-year internship with pre-hire opportunity</p>
+                            <p>Seeking final-year internship starting January 2026 in web or AI domain</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-language"></i>
+                        <div>
+                            <h4>Languages</h4>
+                            <p>French (C1), English (C1)</p>
                         </div>
                     </div>
                 </div>
-                <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form" id="contactForm">
-                    <input type="hidden" name="form-name" value="contact" />
-                    <p class="hidden">
-                        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-                    </p>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Send Message
-                    </button>
-                    <div class="form-status success" id="formSuccess">
-                        <i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully.
-                    </div>
-                    <div class="form-status error" id="formError">
-                        <i class="fas fa-exclamation-circle"></i> Sorry, there was an error sending your message. Please try again.
-                    </div>
-                </form>
             </div>
         </div>
     </section>
@@ -950,10 +977,10 @@
             <a href="https://www.linkedin.com/in/zeineb-chebbi-587945201/" title="LinkedIn" target="_blank" rel="noopener">
                 <i class="fab fa-linkedin"></i>
             </a>
-            <a href="https://github.com/zeinebchebbi123" title="GitHub" target="_blank" rel="noopener">
-                <i class="fab fa-github"></i>
+            <a href="https://zeinebchebbi.netlify.app/" title="Portfolio" target="_blank" rel="noopener">
+                <i class="fas fa-globe"></i>
             </a>
-            <a href="tel:+21651971373" title="Phone">
+            <a href="tel:+21694951922" title="Phone">
                 <i class="fas fa-phone"></i>
             </a>
         </div>
@@ -1029,63 +1056,6 @@
         document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
         });
-
-        // Form handling for Netlify
-        const contactForm = document.getElementById('contactForm');
-        const formSuccess = document.getElementById('formSuccess');
-        const formError = document.getElementById('formError');
-        
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const submitBtn = this.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                submitBtn.disabled = true;
-                
-                // Hide any previous messages
-                formSuccess.classList.remove('visible');
-                formError.classList.remove('visible');
-                
-                // Create form data
-                const formData = new FormData(contactForm);
-                
-                // Submit to Netlify
-                fetch('/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Accept': 'application/json'
-                    },
-                    body: new URLSearchParams(formData).toString()
-                })
-                .then(response => {
-                    console.log('Response status:', response.status);
-                    if (response.ok) {
-                        formSuccess.classList.add('visible');
-                        contactForm.reset();
-                    } else {
-                        return response.text().then(text => {
-                            throw new Error(`Form submission failed: ${response.status} ${response.statusText} - ${text}`);
-                        });
-                    }
-                })
-                .catch(error => {
-                    formError.classList.add('visible');
-                    console.error('Form submission error:', error);
-                })
-                .finally(() => {
-                    setTimeout(() => {
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.disabled = false;
-                        formSuccess.classList.remove('visible');
-                        formError.classList.remove('visible');
-                    }, 5000);
-                });
-            });
-        }
 
         // Add loading animation
         window.addEventListener('load', () => {
